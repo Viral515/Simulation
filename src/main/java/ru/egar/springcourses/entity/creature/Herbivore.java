@@ -8,16 +8,15 @@ public class Herbivore extends Creature {
 
     @Override
     public void MakeMove(Map map){
-        if (this.getTargetTileCoordinates() == null){
-            MoveToTarget(map, new Grass(new Coordinates(0,0)));
-        }
-        else {
+        MoveToTarget(map, new Grass(new Coordinates(0,0)));
+        if (this.getTargetTileCoordinates() != null){
             Eat(map);
         }
     }
 
     public Herbivore(Coordinates coordinates) {
         super(coordinates);
-        this.setHP(2);
+        this.setMaxHP(2);
+        this.setHP(this.getMaxHP());
     }
 }

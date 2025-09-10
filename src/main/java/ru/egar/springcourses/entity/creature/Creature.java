@@ -45,11 +45,8 @@ public abstract class Creature extends Entity {
             this.HP = this.maxHP;
         }
         Entity entity = map.GetTile(targetTileCoordinates);
-        if (entity instanceof Creature) {
+        if ((entity instanceof Creature) && ((Creature) entity).getHP()-1 > 0) {
             ((Creature) entity).setHP(((Creature) entity).getHP()-1);
-            if (((Creature) entity).getHP() <= 0) {
-                map.RemoveTile(targetTileCoordinates);
-            }
         }
         else {
             map.RemoveTile(targetTileCoordinates);
